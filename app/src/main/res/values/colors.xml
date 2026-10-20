@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores principales de MesereArte -->
+    <color name="brown_dark">#2B2420</color>
+    <color name="burgundy">#8B1A1A</color>
+    <color name="burgundy_dark">#6B1010</color>
+    <color name="cream">#FDF3E3</color>
+    <color name="cream_card">#FFFAF2</color>
+    <color name="tan">#B5895A</color>
+
+    <!-- Estados de los eventos -->
+    <color name="ok">#CDEFE0</color>
+    <color name="warn">#FDE3B8</color>
+    <color name="bad">#F8D3D8</color>
+
+    <!-- Textos secundarios -->
+    <color name="text_secondary">#757575</color>
+
+</resources>

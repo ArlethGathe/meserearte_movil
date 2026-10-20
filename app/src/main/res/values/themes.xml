@@ -1,0 +1,26 @@
+
+<resources>
+
+    <!-- Tema base de MesereArte -->
+    <style name="Base.Theme.Meserearte"
+        parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/burgundy</item>
+        <item name="colorPrimaryVariant">@color/burgundy_dark</item>
+        <item name="colorSecondary">@color/tan</item>
+
+        <!-- Barra de estado -->
+        <item name="android:statusBarColor">@color/brown_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Fondo de la aplicación -->
+        <item name="android:windowBackground">@color/cream</item>
+
+    </style>
+
+    <!-- Tema principal -->
+    <style name="Theme.Meserearte"
+        parent="Base.Theme.Meserearte" />
+
+</resources>
