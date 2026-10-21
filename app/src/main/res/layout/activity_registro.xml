@@ -1,0 +1,192 @@
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/cream">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Encabezado -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MesereArte"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/burgundy"
+            android:gravity="center"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear una cuenta"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/brown_dark"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona cómo deseas registrarte"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Selección de rol -->
+        <RadioGroup
+            android:id="@+id/rgRolRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:checkedButton="@id/rbRegistroAdmin">
+
+            <RadioButton
+                android:id="@+id/rbRegistroAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Administrador: crear sala"
+                android:buttonTint="@color/burgundy"/>
+
+            <RadioButton
+                android:id="@+id/rbRegistroMesero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mesero: tengo un código de sala"
+                android:buttonTint="@color/burgundy"/>
+
+        </RadioGroup>
+
+        <!-- Nombre y apellido -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nombre"
+                android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/etApellido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:hint="Apellido"
+                android:inputType="textPersonName"/>
+
+        </LinearLayout>
+
+        <!-- Correo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Correo electrónico"
+            android:textStyle="bold"
+            android:textColor="@color/brown_dark"/>
+
+        <EditText
+            android:id="@+id/etCorreoRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ejemplo@correo.com"
+            android:inputType="textEmailAddress"/>
+
+        <!-- Contraseña -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Contraseña"
+            android:textStyle="bold"
+            android:textColor="@color/brown_dark"/>
+
+        <EditText
+            android:id="@+id/etContrasenaRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mínimo 6 caracteres"
+            android:inputType="textPassword"/>
+
+        <!-- Sala -->
+        <TextView
+            android:id="@+id/tvSalaEtiqueta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nombre de la nueva sala"
+            android:textStyle="bold"
+            android:textColor="@color/brown_dark"/>
+
+        <EditText
+            android:id="@+id/etSala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de tu sala"
+            android:inputType="textCapWords"/>
+
+        <!-- Aviso de privacidad -->
+        <CheckBox
+            android:id="@+id/cbPrivacidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Acepto el aviso de privacidad"
+            android:buttonTint="@color/burgundy"/>
+
+        <!-- Botón administrador -->
+        <Button
+            android:id="@+id/btnCrearSala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Crear sala como admin"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/burgundy"/>
+
+        <!-- Botón mesero -->
+        <Button
+            android:id="@+id/btnUnirme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Unirme como mesero"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/burgundy"
+            android:visibility="gone"/>
+
+        <!-- Volver al inicio -->
+        <TextView
+            android:id="@+id/tvVolverLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textStyle="bold"
+            android:textColor="@color/burgundy"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+</ScrollView>
