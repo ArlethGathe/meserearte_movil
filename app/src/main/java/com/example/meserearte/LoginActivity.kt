@@ -1,12 +1,14 @@
 
 package com.example.meserearte
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,9 +17,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Conectar la pantalla XML
         setContentView(R.layout.activity_login)
 
-        // Elementos de la interfaz
+        // Obtener los elementos de la interfaz
         val rgRol = findViewById<RadioGroup>(R.id.rgRol)
         val etCorreo = findViewById<EditText>(R.id.etCorreo)
         val etContrasena = findViewById<EditText>(R.id.etContrasena)
@@ -25,13 +28,15 @@ class LoginActivity : AppCompatActivity() {
         val btnAdmin = findViewById<Button>(R.id.btnEntrarAdmin)
         val btnMesero = findViewById<Button>(R.id.btnEntrarMesero)
 
-        // Cambiar el botón según el rol seleccionado
+        val tvRegistro = findViewById<TextView>(R.id.tvRegistro)
+
+        // Cambiar botón según el rol seleccionado
         rgRol.setOnCheckedChangeListener { _, checkedId ->
 
             if (checkedId == R.id.rbAdministrador) {
                 btnAdmin.visibility = View.VISIBLE
                 btnMesero.visibility = View.GONE
-            } else {
+            } else if (checkedId == R.id.rbMesero) {
                 btnAdmin.visibility = View.GONE
                 btnMesero.visibility = View.VISIBLE
             }
@@ -43,12 +48,14 @@ class LoginActivity : AppCompatActivity() {
             val correo = etCorreo.text.toString().trim()
             val contrasena = etContrasena.text.toString()
 
+            // Validar correo electrónico
             if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
                 etCorreo.error = "Ingresa un correo válido"
                 etCorreo.requestFocus()
                 return
             }
 
+            // Validar longitud de contraseña
             if (contrasena.length < 6) {
                 etContrasena.error =
                     "La contraseña debe tener al menos 6 caracteres"
@@ -56,6 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 return
             }
 
+            // Confirmar datos válidos
             Toast.makeText(
                 this,
                 "Formulario válido para $rol",
@@ -71,6 +79,17 @@ class LoginActivity : AppCompatActivity() {
         // Acceso del mesero
         btnMesero.setOnClickListener {
             validarAcceso("Mesero")
+        }
+
+        // Abrir la pantalla de registro
+        tvRegistro.setOnClickListener {
+
+            val intent = Intent(
+                this,
+                RegistroActivity::class.java
+            )
+
+            startActivity(intent)
         }
     }
 }
