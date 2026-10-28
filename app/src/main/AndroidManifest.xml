@@ -9,23 +9,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Meserearte">
+        android:theme="@style/Theme.MesereArte">
 
-        <!-- Pantalla de registro -->
+        <!-- Vista 11: Confirmar disponibilidad (mesero) -->
+        <activity
+            android:name=".DisponibilidadActivity"
+            android:exported="false" />
+
+        <!-- Vista 3: Panel principal (administrador) -->
+        <activity
+            android:name=".PanelAdminActivity"
+            android:exported="false" />
+
+        <!-- Vista 1: Registro de usuario -->
         <activity
             android:name=".RegistroActivity"
             android:exported="false" />
 
-        <!-- Pantalla principal: Inicio de sesión -->
+        <!-- Vista 2: Inicio de sesión (pantalla principal) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
     </application>

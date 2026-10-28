@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Meserearte</string>
+    <string name="app_name">MesereArte</string>
+
+    <!-- Menú del administrador -->
+    <string name="menu_salas">Salas</string>
+    <string name="menu_usuarios">Usuarios</string>
+    <string name="menu_eventos">Eventos</string>
+    <string name="menu_asignaciones">Asignaciones</string>
+
+    <!-- Menú del mesero -->
+    <string name="menu_inicio">Inicio</string>
+    <string name="menu_mis_eventos">Mis eventos</string>
+    <string name="menu_notificaciones">Notificaciones</string>
+    <string name="menu_perfil">Mi perfil</string>
+
+    <!-- Común -->
+    <string name="menu_cerrar_sesion">Cerrar sesión</string>
 </resources>

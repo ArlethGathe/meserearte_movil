@@ -1,10 +1,10 @@
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registroRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/cream">
+    android:background="@color/cream"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,52 +16,49 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MesereArte"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/burgundy"
+            android:layout_marginTop="16dp"
             android:gravity="center"
-            android:layout_marginTop="25dp"/>
+            android:text="MesereArte"
+            android:textColor="@color/burgundy"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
+            style="@style/Mesere.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear una cuenta"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/brown_dark"
-            android:layout_marginTop="28dp"/>
+            android:layout_marginTop="28dp"
+            android:text="Crear una cuenta" />
 
         <TextView
+            style="@style/Mesere.Subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona cómo deseas registrarte"
-            android:textSize="14sp"
-            android:textColor="@color/text_secondary"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="6dp"
+            android:text="Selecciona cómo deseas registrarte" />
 
         <!-- Selección de rol -->
         <RadioGroup
             android:id="@+id/rgRolRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:checkedButton="@id/rbRegistroAdmin">
+            android:layout_marginTop="16dp"
+            android:checkedButton="@id/rbRegistroAdmin"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/rbRegistroAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Administrador: crear sala"
-                android:buttonTint="@color/burgundy"/>
+                android:buttonTint="@color/burgundy"
+                android:text="Administrador: crear sala" />
 
             <RadioButton
                 android:id="@+id/rbRegistroMesero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mesero: tengo un código de sala"
-                android:buttonTint="@color/burgundy"/>
+                android:buttonTint="@color/burgundy"
+                android:text="Mesero: tengo un código de sala" />
 
         </RadioGroup>
 
@@ -69,108 +66,103 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/etNombre"
+                style="@style/Mesere.Input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Nombre"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/etApellido"
+                style="@style/Mesere.Input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="12dp"
+                android:layout_weight="1"
                 android:hint="Apellido"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
         <!-- Correo -->
         <TextView
+            style="@style/Mesere.Label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Correo electrónico"
-            android:textStyle="bold"
-            android:textColor="@color/brown_dark"/>
+            android:text="Correo electrónico" />
 
         <EditText
             android:id="@+id/etCorreoRegistro"
+            style="@style/Mesere.Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ejemplo@correo.com"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
         <!-- Contraseña -->
         <TextView
+            style="@style/Mesere.Label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Contraseña"
-            android:textStyle="bold"
-            android:textColor="@color/brown_dark"/>
+            android:text="Contraseña" />
 
         <EditText
             android:id="@+id/etContrasenaRegistro"
+            style="@style/Mesere.Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mínimo 6 caracteres"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
         <!-- Sala -->
         <TextView
             android:id="@+id/tvSalaEtiqueta"
+            style="@style/Mesere.Label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Nombre de la nueva sala"
-            android:textStyle="bold"
-            android:textColor="@color/brown_dark"/>
+            android:text="Nombre de la nueva sala" />
 
         <EditText
             android:id="@+id/etSala"
+            style="@style/Mesere.Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de tu sala"
-            android:inputType="textCapWords"/>
+            android:inputType="textCapWords" />
 
         <!-- Aviso de privacidad -->
         <CheckBox
             android:id="@+id/cbPrivacidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="Acepto el aviso de privacidad"
-            android:buttonTint="@color/burgundy"/>
+            android:layout_marginTop="14dp"
+            android:buttonTint="@color/burgundy"
+            android:text="Acepto el aviso de privacidad" />
 
         <!-- Botón administrador -->
         <Button
             android:id="@+id/btnCrearSala"
+            style="@style/Mesere.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Crear sala como admin"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/burgundy"/>
+            android:text="Crear sala como admin" />
 
         <!-- Botón mesero -->
         <Button
             android:id="@+id/btnUnirme"
+            style="@style/Mesere.Button.Dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Unirme como mesero"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/burgundy"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <!-- Volver al inicio -->
         <TextView
@@ -179,13 +171,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
-            android:padding="8dp"
-            android:gravity="center"
-            android:text="¿Ya tienes cuenta? Inicia sesión"
-            android:textStyle="bold"
-            android:textColor="@color/burgundy"
             android:clickable="true"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -11,12 +11,17 @@
     <color name="cream_card">#FFFAF2</color>
     <color name="tan">#B5895A</color>
 
-    <!-- Estados de los eventos -->
+    <!-- Fondos de las etiquetas de estado -->
     <color name="ok">#CDEFE0</color>
     <color name="warn">#FDE3B8</color>
     <color name="bad">#F8D3D8</color>
 
-    <!-- Textos secundarios -->
-    <color name="text_secondary">#757575</color>
+    <!-- Textos de las etiquetas de estado -->
+    <color name="ok_text">#1E6B4A</color>
+    <color name="warn_text">#8A5A00</color>
+    <color name="bad_text">#9B2335</color>
 
+    <!-- Textos secundarios y bordes -->
+    <color name="text_secondary">#757575</color>
+    <color name="border">#E6D5BC</color>
 </resources>

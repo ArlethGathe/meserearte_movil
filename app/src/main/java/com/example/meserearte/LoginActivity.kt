@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -19,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Conectar la pantalla XML
         setContentView(R.layout.activity_login)
+        findViewById<View>(R.id.loginRoot).ajustarBarrasDelSistema()
 
         // Obtener los elementos de la interfaz
         val rgRol = findViewById<RadioGroup>(R.id.rgRol)
@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Validar correo y contraseña
-        fun validarAcceso(rol: String) {
+        fun validarAcceso(destino: Class<*>) {
 
             val correo = etCorreo.text.toString().trim()
             val contrasena = etContrasena.text.toString()
@@ -63,22 +63,20 @@ class LoginActivity : AppCompatActivity() {
                 return
             }
 
-            // Confirmar datos válidos
-            Toast.makeText(
-                this,
-                "Formulario válido para $rol",
-                Toast.LENGTH_SHORT
-            ).show()
+            // Datos válidos: abrir la pantalla del rol enviando el correo
+            val intent = Intent(this, destino)
+            intent.putExtra(EXTRA_CORREO, correo)
+            startActivity(intent)
         }
 
         // Acceso del administrador
         btnAdmin.setOnClickListener {
-            validarAcceso("Administrador")
+            validarAcceso(PanelAdminActivity::class.java)
         }
 
         // Acceso del mesero
         btnMesero.setOnClickListener {
-            validarAcceso("Mesero")
+            validarAcceso(DisponibilidadActivity::class.java)
         }
 
         // Abrir la pantalla de registro

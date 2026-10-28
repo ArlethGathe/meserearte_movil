@@ -19,6 +19,7 @@ class RegistroActivity : AppCompatActivity() {
 
         // Conectar la interfaz XML
         setContentView(R.layout.activity_registro)
+        findViewById<View>(R.id.registroRoot).ajustarBarrasDelSistema()
 
         // Elementos del formulario
         val rgRol = findViewById<RadioGroup>(R.id.rgRolRegistro)
