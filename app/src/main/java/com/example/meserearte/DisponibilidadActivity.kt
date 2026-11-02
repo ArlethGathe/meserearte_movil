@@ -6,9 +6,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DisponibilidadActivity : AppCompatActivity() {
 
@@ -17,29 +16,13 @@ class DisponibilidadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_disponibilidad)
         findViewById<View>(R.id.disponibilidadRoot).ajustarBarrasDelSistema()
 
-        // Barra superior con menú de opciones
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbarMesero)
-        setSupportActionBar(toolbar)
+        // Barra superior, pestañas y correo del mesero
+        configurarBarraMesero(R.id.tabDisponibilidad)
 
-        // Mostrar el correo recibido desde el inicio de sesión
         val correo = intent.getStringExtra(EXTRA_CORREO) ?: ""
         if (correo.isNotEmpty()) {
-            toolbar.subtitle = correo
             findViewById<TextView>(R.id.tvBienvenidaMesero).text =
                 "Hola, $correo. Indica si puedes asistir a cada evento"
-        }
-
-        // Pestañas de navegación (sus vistas se desarrollarán después)
-        val pestanas = mapOf(
-            R.id.tabInicio to "Inicio",
-            R.id.tabMisEventos to "Mis eventos",
-            R.id.tabDisponibilidad to "Disponibilidad",
-            R.id.tabNotificaciones to "Notificaciones"
-        )
-        for ((id, nombre) in pestanas) {
-            findViewById<TextView>(id).setOnClickListener {
-                if (id != R.id.tabDisponibilidad) avisar(nombre)
-            }
         }
 
         // Eventos pendientes de confirmar
@@ -64,26 +47,34 @@ class DisponibilidadActivity : AppCompatActivity() {
         btnDisponible: Button,
         btnNoDisponible: Button
     ) {
+        estado.aplicarEstado(EstadoEvento.PENDIENTE)
+
+        // Disponible: cambia la etiqueta y permite deshacer
         btnDisponible.setOnClickListener {
-            estado.text = "Confirmada"
-            estado.setBackgroundResource(R.drawable.bg_chip_confirmed)
-            estado.setTextColor(getColor(R.color.ok_text))
-            Toast.makeText(
-                this,
-                "Confirmaste tu disponibilidad: $nombre",
-                Toast.LENGTH_SHORT
-            ).show()
+            val anterior = estado.tag as? EstadoEvento ?: EstadoEvento.PENDIENTE
+            estado.aplicarEstado(EstadoEvento.CONFIRMADA)
+
+            mostrarSnackbar("Disponibilidad confirmada: $nombre", "Deshacer") {
+                estado.aplicarEstado(anterior)
+            }
         }
 
+        // No disponible: pide confirmación con una alerta
         btnNoDisponible.setOnClickListener {
-            estado.text = "No disponible"
-            estado.setBackgroundResource(R.drawable.bg_chip_cancelled)
-            estado.setTextColor(getColor(R.color.bad_text))
-            Toast.makeText(
-                this,
-                "Marcaste que no estás disponible: $nombre",
-                Toast.LENGTH_SHORT
-            ).show()
+            MaterialAlertDialogBuilder(this)
+                .setTitle("No disponible")
+                .setMessage("¿Confirmas que no estarás disponible para este evento?")
+                .setNegativeButton("Cancelar", null)
+                .setPositiveButton("Confirmar") { _, _ ->
+                    val anterior =
+                        estado.tag as? EstadoEvento ?: EstadoEvento.PENDIENTE
+                    estado.aplicarEstado(EstadoEvento.NO_DISPONIBLE)
+
+                    mostrarSnackbar("Marcaste no disponible: $nombre", "Deshacer") {
+                        estado.aplicarEstado(anterior)
+                    }
+                }
+                .show()
         }
     }
 
@@ -95,27 +86,7 @@ class DisponibilidadActivity : AppCompatActivity() {
 
     // Atender las opciones del menú
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_mesero_cerrar_sesion -> {
-                cerrarSesion()
-                true
-            }
-            R.id.menu_mesero_inicio,
-            R.id.menu_mesero_mis_eventos,
-            R.id.menu_mesero_notificaciones,
-            R.id.menu_mesero_perfil -> {
-                avisar(item.title.toString())
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun avisar(seccion: String) {
-        Toast.makeText(
-            this,
-            "$seccion: vista en desarrollo",
-            Toast.LENGTH_SHORT
-        ).show()
+        return if (manejarMenuMesero(item)) true
+        else super.onOptionsItemSelected(item)
     }
 }

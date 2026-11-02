@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Android 13 o superior: permiso para mostrar notificaciones -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
+        android:name=".MesereArteApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,9 +15,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MesereArte">
 
+        <!-- Vista 10: Eventos asignados (mesero) -->
+        <activity
+            android:name=".EventosAsignadosActivity"
+            android:exported="false" />
+
         <!-- Vista 11: Confirmar disponibilidad (mesero) -->
         <activity
             android:name=".DisponibilidadActivity"
+            android:exported="false" />
+
+        <!-- Vista 7: Notificaciones (administrador) -->
+        <activity
+            android:name=".NotificacionesAdminActivity"
+            android:exported="false" />
+
+        <!-- Vista 4: Gestión de eventos (administrador) -->
+        <activity
+            android:name=".EventosActivity"
             android:exported="false" />
 
         <!-- Vista 3: Panel principal (administrador) -->

@@ -1,6 +1,7 @@
 
 package com.example.meserearte
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -9,7 +10,6 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class RegistroActivity : AppCompatActivity() {
@@ -113,22 +113,14 @@ class RegistroActivity : AppCompatActivity() {
 
             // Validar aviso de privacidad
             if (!cbPrivacidad.isChecked) {
-                Toast.makeText(
-                    this,
-                    "Debes aceptar el aviso de privacidad",
-                    Toast.LENGTH_SHORT
-                ).show()
+                mostrarSnackbar("Debes aceptar el aviso de privacidad")
                 return
             }
 
-            // Confirmación del formulario
-            Toast.makeText(
-                this,
-                "Formulario de $rol validado correctamente",
-                Toast.LENGTH_LONG
-            ).show()
-
-            // Regresar a la pantalla anterior
+            // Registro correcto: devolver el correo a Inicio de sesión
+            val resultado = Intent()
+            resultado.putExtra(EXTRA_CORREO, correo)
+            setResult(RESULT_OK, resultado)
             finish()
         }
 

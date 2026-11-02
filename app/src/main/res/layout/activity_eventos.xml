@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/eventosRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown_dark"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_barra_admin" />
+
+    <!-- Contenido -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cream">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/Mesere.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gestión de eventos" />
+
+            <TextView
+                style="@style/Mesere.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Consulta, busca y elimina eventos de tu sala" />
+
+            <!-- Búsqueda y alta -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etBuscar"
+                    style="@style/Mesere.Input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Buscar evento…"
+                    android:inputType="text"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/btnNuevoEvento"
+                    style="@style/Mesere.Button.Tan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="+ Nuevo evento" />
+
+            </LinearLayout>
+
+            <!-- Tarjetas de evento (se agregan desde Kotlin) -->
+            <LinearLayout
+                android:id="@+id/llEventos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvSinResultados"
+                style="@style/Mesere.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="No se encontraron eventos"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

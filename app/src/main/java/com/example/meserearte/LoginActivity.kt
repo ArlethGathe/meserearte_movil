@@ -1,4 +1,3 @@
-
 package com.example.meserearte
 
 import android.content.Intent
@@ -9,9 +8,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
+
+    // Resultado de la pantalla de registro: devuelve el correo capturado
+    private val registroLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { resultado ->
+        if (resultado.resultCode == RESULT_OK) {
+            val correo = resultado.data?.getStringExtra(EXTRA_CORREO) ?: ""
+            findViewById<EditText>(R.id.etCorreo).setText(correo)
+            mostrarSnackbar("Cuenta creada. Ya puedes iniciar sesión")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,20 +61,19 @@ class LoginActivity : AppCompatActivity() {
 
             // Validar correo electrónico
             if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-                etCorreo.error = "Ingresa un correo válido"
                 etCorreo.requestFocus()
+                mostrarSnackbar("Ingresa un correo válido")
                 return
             }
 
             // Validar longitud de contraseña
             if (contrasena.length < 6) {
-                etContrasena.error =
-                    "La contraseña debe tener al menos 6 caracteres"
                 etContrasena.requestFocus()
+                mostrarSnackbar("La contraseña debe tener al menos 6 caracteres")
                 return
             }
 
-            // Datos válidos: abrir la pantalla del rol enviando el correo
+            // Datos válidos: intent explícito enviando el correo
             val intent = Intent(this, destino)
             intent.putExtra(EXTRA_CORREO, correo)
             startActivity(intent)
@@ -79,15 +89,9 @@ class LoginActivity : AppCompatActivity() {
             validarAcceso(DisponibilidadActivity::class.java)
         }
 
-        // Abrir la pantalla de registro
+        // Abrir el registro esperando un resultado
         tvRegistro.setOnClickListener {
-
-            val intent = Intent(
-                this,
-                RegistroActivity::class.java
-            )
-
-            startActivity(intent)
+            registroLauncher.launch(Intent(this, RegistroActivity::class.java))
         }
     }
 }

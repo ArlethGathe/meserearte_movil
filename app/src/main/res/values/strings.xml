@@ -15,4 +15,9 @@
 
     <!-- Común -->
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Detalles del evento asignado -->
+    <string name="detalle_uniforme">Camisa blanca y pantalón negro</string>
+    <string name="detalle_indicaciones">Presentarse 45 minutos antes</string>
+    <string name="detalle_capitan">María López</string>
 </resources>
