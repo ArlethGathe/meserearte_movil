@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Textos -->
+    <style name="Mesere.Title" parent="">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/brown_dark</item>
+    </style>
+
+    <style name="Mesere.Subtitle" parent="">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="Mesere.Label" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/brown_dark</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="Mesere.CardTitle" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/brown_dark</item>
+    </style>
+
+    <style name="Mesere.Indicator" parent="">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/burgundy</item>
+    </style>
+
+    <!-- Campos de texto -->
+    <style name="Mesere.Input" parent="">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/brown_dark</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+    </style>
+
+    <!-- Tarjetas -->
+    <style name="Mesere.Card" parent="">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- Botones -->
+    <style name="Mesere.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/burgundy</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="Mesere.Button.Dark" parent="Mesere.Button.Primary">
+        <item name="backgroundTint">@color/brown_dark</item>
+    </style>
+
+    <style name="Mesere.Button.Tan" parent="Mesere.Button.Primary">
+        <item name="backgroundTint">@color/tan</item>
+    </style>
+
+    <style name="Mesere.Button.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/burgundy</item>
+        <item name="android:textColor">@color/burgundy</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- Etiquetas de estado -->
+    <style name="Mesere.Chip" parent="">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="Mesere.Chip.Pending">
+        <item name="android:background">@drawable/bg_chip_pending</item>
+        <item name="android:textColor">@color/warn_text</item>
+    </style>
+
+    <style name="Mesere.Chip.Confirmed">
+        <item name="android:background">@drawable/bg_chip_confirmed</item>
+        <item name="android:textColor">@color/ok_text</item>
+    </style>
+
+    <style name="Mesere.Chip.Cancelled">
+        <item name="android:background">@drawable/bg_chip_cancelled</item>
+        <item name="android:textColor">@color/bad_text</item>
+    </style>
+
+    <!-- Pestañas del menú de navegación superior -->
+    <style name="Mesere.Tab" parent="">
+        <item name="android:background">@drawable/bg_tab</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brown_dark</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Mesere.Tab.Selected">
+        <item name="android:background">@drawable/bg_tab_selected</item>
+        <item name="android:textColor">@color/burgundy</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

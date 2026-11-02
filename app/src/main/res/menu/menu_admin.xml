@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_admin_salas"
+        android:title="@string/menu_salas"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_admin_usuarios"
+        android:title="@string/menu_usuarios"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_admin_eventos"
+        android:title="@string/menu_eventos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_admin_asignaciones"
+        android:title="@string/menu_asignaciones"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_admin_cerrar_sesion"
+        android:title="@string/menu_cerrar_sesion"
+        app:showAsAction="never" />
+</menu>

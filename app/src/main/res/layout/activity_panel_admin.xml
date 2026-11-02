@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panelAdminRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown_dark"
+    android:orientation="vertical">
+
+    <!-- Barra superior con menú de opciones -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/brown_dark"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+        app:subtitleTextColor="@color/tan"
+        app:title="MesereArte · Administrador"
+        app:titleTextColor="@android:color/white" />
+
+    <!-- Pestañas desplazables -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cream_card"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tabInicio"
+                style="@style/Mesere.Tab.Selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio" />
+
+            <TextView
+                android:id="@+id/tabSalas"
+                style="@style/Mesere.Tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salas" />
+
+            <TextView
+                android:id="@+id/tabUsuarios"
+                style="@style/Mesere.Tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuarios" />
+
+            <TextView
+                android:id="@+id/tabEventos"
+                style="@style/Mesere.Tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eventos" />
+
+            <TextView
+                android:id="@+id/tabAsignaciones"
+                style="@style/Mesere.Tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asignaciones" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Contenido -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cream">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/Mesere.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Panel principal" />
+
+            <TextView
+                android:id="@+id/tvBienvenidaAdmin"
+                style="@style/Mesere.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Resumen de tu sala" />
+
+            <!-- Indicadores: fila 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/Mesere.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Mesere.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3" />
+
+                    <TextView
+                        style="@style/Mesere.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eventos próximos" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Mesere.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Mesere.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12" />
+
+                    <TextView
+                        style="@style/Mesere.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meseros activos" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Indicadores: fila 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/Mesere.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Mesere.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7" />
+
+                    <TextView
+                        style="@style/Mesere.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Asignaciones pendientes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Mesere.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Mesere.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4" />
+
+                    <TextView
+                        style="@style/Mesere.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notificaciones" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Próximos eventos -->
+            <LinearLayout
+                style="@style/Mesere.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Mesere.CardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Próximos eventos" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Boda Ramírez"
+                            android:textColor="@color/brown_dark"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Mesere.Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15 nov 2026 · 17:00" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/Mesere.Chip.Confirmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Confirmada" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Evento Corporativo ABC"
+                            android:textColor="@color/brown_dark"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Mesere.Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="22 nov 2026 · 08:00" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/Mesere.Chip.Pending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pendiente" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Resumen de asignaciones -->
+            <LinearLayout
+                style="@style/Mesere.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Mesere.CardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen de asignaciones" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Mesere.Chip.Confirmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 confirmadas" />
+
+                    <TextView
+                        style="@style/Mesere.Chip.Pending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="7 pendientes" />
+
+                    <TextView
+                        style="@style/Mesere.Chip.Cancelled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="3 canceladas" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

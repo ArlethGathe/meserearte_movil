@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_mesero_inicio"
+        android:title="@string/menu_inicio"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_mesero_mis_eventos"
+        android:title="@string/menu_mis_eventos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_mesero_notificaciones"
+        android:title="@string/menu_notificaciones"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_mesero_perfil"
+        android:title="@string/menu_perfil"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_mesero_cerrar_sesion"
+        android:title="@string/menu_cerrar_sesion"
+        app:showAsAction="never" />
+</menu>
