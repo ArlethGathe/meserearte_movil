@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetRoot" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:orientation="vertical"
+    android:background="@color/brown_dark" android:padding="12dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="MesereArte · Próximo evento" android:textStyle="bold"
+        android:textColor="@color/tan" android:textSize="14sp" />
+    <TextView android:id="@+id/widgetNombre" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Abre MesereArte"
+        android:textStyle="bold" android:textColor="@color/white" android:textSize="16sp"
+        android:maxLines="1" android:ellipsize="end" />
+    <TextView android:id="@+id/widgetFecha" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textColor="@color/white"
+        android:textSize="12sp" android:maxLines="1" />
+    <TextView android:id="@+id/widgetLugar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textColor="@color/white"
+        android:textSize="12sp" android:maxLines="1" android:ellipsize="end" />
+    <TextView android:id="@+id/widgetDias" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textColor="@color/tan"
+        android:textStyle="bold" android:textSize="12sp" />
+</LinearLayout>

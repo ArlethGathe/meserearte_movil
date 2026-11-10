@@ -1,6 +1,11 @@
 package com.example.meserearte
 
 import android.os.Bundle
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import java.util.Calendar
+import java.util.Locale
+import java.text.SimpleDateFormat
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -40,8 +45,60 @@ class EventosActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnNuevoEvento).setOnClickListener {
-            avisarEnDesarrollo("Nuevo evento")
+            mostrarDialogoNuevoEvento()
         }
+    }
+
+    // Formulario con los widgets DatePicker y TimePicker de la práctica.
+    private fun mostrarDialogoNuevoEvento() {
+        val vista = LayoutInflater.from(this).inflate(R.layout.dialogo_nuevo_evento, null)
+        val campoNombre = vista.findViewById<EditText>(R.id.etNuevoEventoNombre)
+        val campoLugar = vista.findViewById<EditText>(R.id.etNuevoEventoLugar)
+        val botonFecha = vista.findViewById<Button>(R.id.btnElegirFecha)
+        val botonHora = vista.findViewById<Button>(R.id.btnElegirHora)
+        var fecha = ""
+        var hora = ""
+        botonFecha.setOnClickListener {
+            val hoy = Calendar.getInstance()
+            DatePickerDialog(this, { _, anio, mes, dia ->
+                val elegido = Calendar.getInstance().apply { set(anio, mes, dia) }
+                fecha = SimpleDateFormat("dd MMM yyyy", Locale("es", "MX")).format(elegido.time)
+                botonFecha.text = fecha
+            }, hoy.get(Calendar.YEAR), hoy.get(Calendar.MONTH), hoy.get(Calendar.DAY_OF_MONTH)).show()
+        }
+        botonHora.setOnClickListener {
+            val ahora = Calendar.getInstance()
+            TimePickerDialog(this, { _, h, m ->
+                hora = String.format(Locale.getDefault(), "%02d:%02d", h, m)
+                botonHora.text = hora
+            }, ahora.get(Calendar.HOUR_OF_DAY), ahora.get(Calendar.MINUTE), true).show()
+        }
+        val dialogo = MaterialAlertDialogBuilder(this)
+            .setTitle("Nuevo evento")
+            .setView(vista)
+            .setNegativeButton("Cancelar", null)
+            .setPositiveButton("Guardar", null)
+            .create()
+        dialogo.setOnShowListener {
+            dialogo.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val nombre = campoNombre.text.toString().trim()
+                val lugar = campoLugar.text.toString().trim()
+                if (nombre.isBlank()) { campoNombre.error = "Ingresa un nombre"; return@setOnClickListener }
+                if (lugar.isBlank()) { campoLugar.error = "Ingresa un lugar"; return@setOnClickListener }
+                if (fecha.isBlank() || hora.isBlank()) {
+                    mostrarSnackbar("Selecciona la fecha y la hora")
+                    return@setOnClickListener
+                }
+                val nuevo = Evento(nombre, "$fecha · $hora", lugar, 0, EstadoEvento.PROGRAMADO)
+                DatosEventos.lista.add(nuevo)
+                agregarTarjeta(nuevo)
+                filtrar("")
+                findViewById<EditText>(R.id.etBuscar).setText("")
+                dialogo.dismiss()
+                mostrarSnackbar("Evento programado correctamente")
+            }
+        }
+        dialogo.show()
     }
 
     // Infla la tarjeta de un evento y le asigna sus datos y acciones

@@ -21,6 +21,7 @@ const val EXTRA_LUGAR = "evento_lugar"
 // ---------- Estados de un evento ----------
 enum class EstadoEvento(val texto: String, val fondo: Int, val colorTexto: Int) {
     PENDIENTE("Pendiente", R.drawable.bg_chip_pending, R.color.warn_text),
+    PROGRAMADO("Programado", R.drawable.bg_chip_pending, R.color.warn_text),
     CONFIRMADA("Confirmada", R.drawable.bg_chip_confirmed, R.color.ok_text),
     NO_DISPONIBLE("No disponible", R.drawable.bg_chip_cancelled, R.color.bad_text)
 }
@@ -113,6 +114,7 @@ fun AppCompatActivity.configurarBarraAdmin(tabActual: Int) {
             when (id) {
                 R.id.tabInicio -> volverAlPanel()
                 R.id.tabEventos -> abrirSeccionAdmin(EventosActivity::class.java)
+                R.id.tabUsuarios -> abrirSeccionAdmin(UsuariosActivity::class.java)
                 else -> avisarEnDesarrollo(nombre)
             }
         }
@@ -143,12 +145,15 @@ fun AppCompatActivity.manejarMenuAdmin(item: MenuItem): Boolean {
             abrirSeccionAdmin(EventosActivity::class.java)
             true
         }
+        R.id.menu_admin_usuarios -> {
+            abrirSeccionAdmin(UsuariosActivity::class.java)
+            true
+        }
         R.id.menu_admin_notificaciones -> {
             abrirSeccionAdmin(NotificacionesAdminActivity::class.java)
             true
         }
         R.id.menu_admin_salas,
-        R.id.menu_admin_usuarios,
         R.id.menu_admin_asignaciones -> {
             avisarEnDesarrollo(item.title.toString())
             true
@@ -180,11 +185,19 @@ fun AppCompatActivity.configurarBarraMesero(tabActual: Int) {
         tab.setOnClickListener {
             when (id) {
                 R.id.tabMisEventos -> abrirMisEventos()
+                R.id.tabInicio -> abrirInicioMesero()
                 R.id.tabDisponibilidad -> abrirDisponibilidad()
                 else -> avisarEnDesarrollo(nombre)
             }
         }
     }
+}
+
+fun AppCompatActivity.abrirInicioMesero() {
+    if (this is InicioMeseroActivity) return
+    val intent = Intent(this, InicioMeseroActivity::class.java)
+    intent.putExtra(EXTRA_CORREO, correoActual())
+    startActivity(intent)
 }
 
 // Intent explícito hacia Eventos asignados con nombre, fecha y lugar
@@ -201,19 +214,25 @@ fun AppCompatActivity.abrirMisEventos() {
 
 fun AppCompatActivity.abrirDisponibilidad() {
     if (this is DisponibilidadActivity) return
-    // Si Eventos asignados se abrió desde una notificación, no hay pantalla previa
-    if (isTaskRoot) {
-        val intent = Intent(this, DisponibilidadActivity::class.java)
-        intent.putExtra(EXTRA_CORREO, correoActual())
-        startActivity(intent)
-    }
-    finish()
+    val intent = Intent(this, DisponibilidadActivity::class.java)
+    intent.putExtra(EXTRA_CORREO, correoActual())
+    startActivity(intent)
 }
 
 fun AppCompatActivity.manejarMenuMesero(item: MenuItem): Boolean {
     return when (item.itemId) {
         R.id.menu_mesero_cerrar_sesion -> {
             confirmarCerrarSesion()
+            true
+        }
+        R.id.menu_mesero_capitan -> {
+            startActivity(Intent(this, AsistenciasActivity::class.java).apply {
+                putExtra(EXTRA_CORREO, correoActual())
+            })
+            true
+        }
+        R.id.menu_mesero_inicio -> {
+            abrirInicioMesero()
             true
         }
         R.id.menu_mesero_mis_eventos -> {
