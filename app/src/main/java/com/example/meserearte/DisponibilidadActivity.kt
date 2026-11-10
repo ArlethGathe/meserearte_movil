@@ -53,9 +53,13 @@ class DisponibilidadActivity : AppCompatActivity() {
         btnDisponible.setOnClickListener {
             val anterior = estado.tag as? EstadoEvento ?: EstadoEvento.PENDIENTE
             estado.aplicarEstado(EstadoEvento.CONFIRMADA)
+            DatosEventos.buscar(nombre)?.estado = EstadoEvento.CONFIRMADA
+            ProximoEventoWidget.actualizarTodos(this)
 
             mostrarSnackbar("Disponibilidad confirmada: $nombre", "Deshacer") {
                 estado.aplicarEstado(anterior)
+                DatosEventos.buscar(nombre)?.estado = anterior
+                ProximoEventoWidget.actualizarTodos(this)
             }
         }
 
@@ -69,9 +73,13 @@ class DisponibilidadActivity : AppCompatActivity() {
                     val anterior =
                         estado.tag as? EstadoEvento ?: EstadoEvento.PENDIENTE
                     estado.aplicarEstado(EstadoEvento.NO_DISPONIBLE)
+                    DatosEventos.buscar(nombre)?.estado = EstadoEvento.NO_DISPONIBLE
+                    ProximoEventoWidget.actualizarTodos(this)
 
                     mostrarSnackbar("Marcaste no disponible: $nombre", "Deshacer") {
                         estado.aplicarEstado(anterior)
+                DatosEventos.buscar(nombre)?.estado = anterior
+                ProximoEventoWidget.actualizarTodos(this)
                     }
                 }
                 .show()

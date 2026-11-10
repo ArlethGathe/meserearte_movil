@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Acceso del mesero
         btnMesero.setOnClickListener {
-            validarAcceso(DisponibilidadActivity::class.java)
+            validarAcceso(InicioMeseroActivity::class.java)
         }
 
         // Abrir el registro esperando un resultado

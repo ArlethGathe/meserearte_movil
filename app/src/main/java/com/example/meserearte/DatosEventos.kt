@@ -6,13 +6,13 @@ data class Evento(
     val fecha: String,
     val lugar: String,
     val meseros: Int,
-    val estado: EstadoEvento
+    var estado: EstadoEvento
 )
 
 object DatosEventos {
 
     // Todos los eventos conocidos por la aplicación
-    val lista = listOf(
+    val lista = mutableListOf(
         Evento("Boda Hernández & Ruiz", "08 nov 2026 · 18:00",
             "Hacienda Santa Elena", 8, EstadoEvento.CONFIRMADA),
         Evento("XV años Valentina", "14 nov 2026 · 19:00",
@@ -26,7 +26,7 @@ object DatosEventos {
     )
 
     // Eventos que se muestran en Gestión de eventos (Vista 4)
-    val gestion = lista.take(3)
+    val gestion: List<Evento> get() = lista
 
     fun buscar(nombre: String): Evento? = lista.firstOrNull { it.nombre == nombre }
 }

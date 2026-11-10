@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="18dp">
+    <EditText android:id="@+id/etNuevoEventoNombre" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Nombre del evento"
+        android:inputType="textCapSentences" android:singleLine="true" />
+    <EditText android:id="@+id/etNuevoEventoLugar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Lugar del evento"
+        android:inputType="textCapWords" android:singleLine="true" />
+    <Button android:id="@+id/btnElegirFecha" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Seleccionar fecha"
+        android:textAllCaps="false" />
+    <Button android:id="@+id/btnElegirHora" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Seleccionar hora"
+        android:textAllCaps="false" />
+</LinearLayout>

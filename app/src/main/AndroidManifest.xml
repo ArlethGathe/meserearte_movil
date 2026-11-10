@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MesereArte">
 
+        <!-- Widgets: vistas nuevas -->
+        <activity android:name=".UsuariosActivity" android:exported="false" />
+        <activity android:name=".InicioMeseroActivity" android:exported="false" />
+        <activity android:name=".AsistenciasActivity" android:exported="false" />
+
         <!-- Vista 10: Eventos asignados (mesero) -->
         <activity
             android:name=".EventosAsignadosActivity"
@@ -55,6 +60,17 @@
             </intent-filter>
         </activity>
 
+        <!-- Widget de pantalla principal del mesero -->
+        <receiver
+            android:name=".ProximoEventoWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/proximo_evento_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

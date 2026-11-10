@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp" android:orientation="vertical"
+    android:padding="14dp" android:background="@drawable/bg_card">
+    <TextView android:id="@+id/tvAsistenciaNombre" style="@style/Mesere.CardTitle"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nombre" />
+    <TextView android:id="@+id/tvAsistenciaHora" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Sin registrar" android:padding="6dp" />
+    <Spinner android:id="@+id/spEstadoAsistencia" android:layout_width="match_parent"
+        android:layout_height="48dp" />
+    <Button android:id="@+id/btnCambiarHora" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Cambiar hora de llegada"
+        android:textAllCaps="false" />
+</LinearLayout>
